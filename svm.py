@@ -31,6 +31,8 @@ y_test = np.array(df.values)[:,-1] #getting the last field to create the class t
 
 #created 4 nested for loops that will iterate through the values of c, degree, kernel, and decision_function_shape
 
+accuracy = 0
+highestAccuracy = 0
 for a in c: #iterates over c
     for d in degree: #iterates over degree
         for k in kernel: #iterates kernel
@@ -48,16 +50,22 @@ for a in c: #iterates over c
                 #make the SVM prediction for each test sample and start computing its accuracy
                 #hint: to iterate over two collections simultaneously, use zip()
                 #Example. for (x_testSample, y_testSample) in zip(X_test, y_test):
+                accurate = 0
+                length = 0
                 for (x_testSample, y_testSample) in zip(X_test, y_test):
                     #to make a prediction do: clf.predict([x_testSample])
                     prediction = clf.predict([x_testSample])
+                    if prediction == y_testSample:
+                        accurate += 1
+                    length += 1
 
                     #check if the calculated accuracy is higher than the previously one calculated. If so, update the highest accuracy and print it together
                     #with the SVM hyperparameters. Example: "Highest SVM accuracy so far: 0.92, Parameters: a=1, degree=2, kernel= poly, decision_function_shape = 'ovo'"
-
-                    #clf.fit(x_testSample, y_testSample)
-                    #y_testSample = y_testSample.reshape(1, -1)
-                    print("HighestSVM accuracy so far: ", clf.score([x_testSample], prediction)*100, " Parameters: a=",a, ", degree=",d, ", kernal=",k, ", decision_function_shape=",dfs)
+                
+                accuracy = accurate / length
+                if accuracy > highestAccuracy:
+                    highestAccuracy = accuracy
+                    print("HighestSVM accuracy so far: ", accuracy, " Parameters: a=",a, ", degree=",d, ", kernal=",k, ", decision_function_shape=",dfs)
 
 
 
