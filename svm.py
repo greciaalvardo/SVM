@@ -3,7 +3,7 @@
 # FILENAME: svm.py
 # SPECIFICATION: Support Vector Machine - train, test, and compute accuracy
 # FOR: CS 4210- Assignment #3
-# TIME SPENT: 2hr
+# TIME SPENT: 1hr
 #-----------------------------------------------------------*/
 
 #IMPORTANT NOTE: YOU HAVE TO WORK WITH THE PYTHON LIBRARIES numpy AND pandas to complete this code.
